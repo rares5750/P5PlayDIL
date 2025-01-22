@@ -28,12 +28,12 @@ function setup() {
 	right = new Sprite(width, height/2, 10, height, "s");
 	right.color = "white";
 
-	stackArray[index] = new Sprite(width/2, height - 5, width/2, 9, "s");
+	stackArray[index] = new Sprite(width/2, height - 5, width/2, 8, "s");
 	stackArray[index].color = "white";
 
 	index++;
 
-	stackArray[index] = new Sprite(width/2, height - 15, width/2, 9, "d");
+	stackArray[index] = new Sprite(width/2, height - 15, width/2, 8, "d");
 	stackArray[index].color = "white";
 	stackArray[index].vel.x = 2;
 	stackArray[index].friction = 0;
@@ -67,12 +67,12 @@ function draw() {
 			stackArray[index].remove();
 	
 			playedPiece = stackArray.pop();
-			stackArray[index] = new Sprite(playedPiece.x + midBetweenLefts, height - 5 - 10*level, playedPiece.width - diffBetweenLefts, 9, "s");
+			stackArray[index] = new Sprite(playedPiece.x + midBetweenLefts, height - 5 - 10*level, playedPiece.width - diffBetweenLefts, 8, "s");
 			stackArray[index].color = "white";
 	
 			index++;
 			level++;
-			stackArray[index] = new Sprite(playedPiece.x + midBetweenLefts, height - 5 - 10*level, playedPiece.width - diffBetweenLefts, 9, "d");
+			stackArray[index] = new Sprite(playedPiece.x + midBetweenLefts, height - 5 - 10*level, playedPiece.width - diffBetweenLefts, 8, "d");
 			stackArray[index].color = "white";
 			stackArray[index].vel.x = 2 + (level-1)*movementMultiplier;
 			stackArray[index].friction = 0;
@@ -84,17 +84,18 @@ function draw() {
 			stackArray[index].remove();
 	
 			playedPiece = stackArray.pop();
-			stackArray[index] = new Sprite(playedPiece.x - midBetweenRights, height - 5 - 10*level, playedPiece.width - diffBetweenRights, 9, "s");
+			stackArray[index] = new Sprite(playedPiece.x - midBetweenRights, height - 5 - 10*level, playedPiece.width - diffBetweenRights, 8, "s");
 			stackArray[index].color = "white";
 	
 			index++;
 			level++;
-			stackArray[index] = new Sprite(playedPiece.x - midBetweenRights, height - 5 - 10*level, playedPiece.width - diffBetweenRights, 9, "d");
+			stackArray[index] = new Sprite(playedPiece.x - midBetweenRights, height - 5 - 10*level, playedPiece.width - diffBetweenRights, 8, "d");
 			stackArray[index].color = "white";
 			stackArray[index].vel.x = 2 + (level-1)*movementMultiplier;
 			stackArray[index].friction = 0;
 		}
 	}
+	// reset function
 	else{
 		textAlign(CENTER);
 		textSize(40);
@@ -115,12 +116,12 @@ function draw() {
 			right = new Sprite(width, height/2, 10, height, "s");
 			right.color = "white";
 
-			stackArray[index] = new Sprite(width/2, height - 5, width/2, 9, "s");
+			stackArray[index] = new Sprite(width/2, height - 5, width/2, 8, "s");
 			stackArray[index].color = "white";
 
 			index++;
 
-			stackArray[index] = new Sprite(width/2, height - 15, width/2, 9, "d");
+			stackArray[index] = new Sprite(width/2, height - 15, width/2, 8, "d");
 			stackArray[index].color = "white";
 			stackArray[index].vel.x = 2;
 			stackArray[index].friction = 0;
