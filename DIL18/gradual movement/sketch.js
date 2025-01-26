@@ -7,6 +7,13 @@ let SHABOF; // "shift held at beginning of function"
 let maxSpeed = 2;
 let velAdder = 0.05;
 
+//experimentation variables
+let xDist;
+let yDist;
+let angleToMouse;
+let xVector;
+let yVector;
+
 function setup() {
 	new Canvas(500, 500);
 	displayMode('centered');
@@ -38,6 +45,27 @@ function draw() {
 		maxSpeed = maxSpeed*2;
 		velAdder = velAdder*2;
 	}
+
+	//not part of DIL, wanted to just experiment
+	if(mouse.pressed()){
+		xDist = Math.abs(mouse.x - player.x);
+		yDist = Math.abs(mouse.y - player.y);
+
+		if (mouse.x > player.x && mouse.y < player.y){
+			angleToMouse = Math.atan(yDist/xDist);
+		}
+		else if(mouse.x < player.x && mouse.y < player.y){
+			angleToMouse = Math.PI - Math.atan(yDist/xDist);
+		}
+
+		xVector = 6 * Math.cos(angleToMouse);
+		yVector = 6 * Math.sin(angleToMouse);
+
+		player.vel.x += xVector;
+		player.vel.y -= yVector;
+	}
+
+	// ^^ throw player to mouse with a vector of an arguement that points it towards the mouse and a modulus(?) of 6
 
 	if(kb.pressing("d") || kb.pressing("a")){
 		if(kb.pressing("d")){
