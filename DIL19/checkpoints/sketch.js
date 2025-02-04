@@ -14,7 +14,6 @@ function setup() {
 
 	textAlign(CENTER);
 	fill("white");
-	text("Captured Zones:" + capturedZones, width/2, 50);
 	
 
 	noStroke();
@@ -32,6 +31,7 @@ function setup() {
 
 function draw() {
 	background('black');
+	text("Captured Zones: " + capturedZones, width/2, 50);
 	if(kb.pressing("d")){
 		player.x += movementSpeed;
 	}
@@ -46,10 +46,14 @@ function draw() {
 	}
 
 	for(let i = 0; i < checkpointsArray.length; i++){
+		text("Zone: " + String(i + 1), checkpointsArray[i].x, checkpointsArray[i].y - 20);
+	}
+
+	for(let i = 0; i < checkpointsArray.length; i++){
 		if(player.collides(checkpointsArray[i])){
 			checkpointsArray[i].color = "white";
 			checkpointsArray[i].collider = "n";
-			capturedZones = capturedZones + String(i) + ", ";
+			capturedZones = capturedZones + String(i + 1) + ", ";
 		}
 	}
 }
