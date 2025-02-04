@@ -1,4 +1,5 @@
 let checkpointsArray = [];
+let capturedZones = "";
 let player;
 
 const checkpointSize = 20;
@@ -10,6 +11,11 @@ let oldY;
 function setup() {
 	new Canvas(750, 750);
 	displayMode('centered');
+
+	textAlign(CENTER);
+	fill("white");
+	text("Captured Zones:" + capturedZones, width/2, 50);
+	
 
 	noStroke();
 	for(let i = 0; i < 5; i++){
@@ -42,6 +48,8 @@ function draw() {
 	for(let i = 0; i < checkpointsArray.length; i++){
 		if(player.collides(checkpointsArray[i])){
 			checkpointsArray[i].color = "white";
+			checkpointsArray[i].collider = "n";
+			capturedZones = capturedZones + String(i) + ", ";
 		}
 	}
 }
