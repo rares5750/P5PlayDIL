@@ -4,21 +4,22 @@ let score = 0;
 let finalScore;
 let gameOver = false;
 
-const movementSpeed = 4;
+const movementSpeed = 5;
 
 function setup() {
 	new Canvas(800, 800);
 	displayMode('centered');
 
 	zombies = new Group();
-	zombies.w = 20;
-	zombies.h = 20;
+	zombies.w = 30;
+	zombies.h = 30;
 	zombies.color = "green";
 	zombies.collider = "d";
+	zombies.speed = 4;
 
-	player = new Sprite(width/2, height/2, 20);
-	setInterval(spawnZombie, 3500);
-	setInterval(iterateScore, 1000);
+	player = new Sprite(width/2, height/2, 30);
+	setInterval(spawnZombie, 2000);
+	setInterval(iterateScore, 1500);
 }
 
 function draw() {
@@ -49,12 +50,31 @@ function draw() {
 			finalScore = score;
 		}
 	}
+	else{
+		zombies.collider = "s";
+		player.collider = "s";
+		textSize(32);
+		text("Game Over!", width/2, height/2);
+		textSize(16);
+		text("Press Space to restart.", width/2, height/2 + 32);
+		if(kb.presses(" ")){
+			score = 0;
+			allSprites.remove();
+			zombies.collider = "d";
+			player = new Sprite(width/2, height/2, 30);
+			gameOver = false;
+		}
+	}
 }
 
 function spawnZombie(){
-	new zombies.Sprite(width*Math.round(random()), random(0, height));
+	if(!gameOver){
+		new zombies.Sprite(width*Math.round(random()), random(0, height));
+	}
 }
 
 function iterateScore(){
-	score++;
+	if(!gameOver){
+		score++;
+	}
 }
