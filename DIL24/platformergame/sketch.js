@@ -7,6 +7,8 @@ let bgMusic;
 let map;
 let coins, coinCollect;
 
+let coinsCollected = 0;
+
 let mapTiles = [
 "............",
 "............",
@@ -25,6 +27,7 @@ function preload(){
 	coinCollect = loadSound("coin1.wav");
 	jumpSound = loadSound("jump.wav");
 	bgMusic = loadSound("one_0.mp3");
+	font = loadFont("NostalgicRemain-Regular.ttf");
 }
 
 function setup(){
@@ -78,6 +81,12 @@ function draw() {
 		if(player.overlaps(coin)){
 			coinCollect.play();
 			coin.remove();
+			coinsCollected++;
 		}
 	}
+
+	allSprites.draw();
+	textFont(font);
+	textSize(32);
+	text("Coins collected: " + coinsCollected, 500, 700);
 }
