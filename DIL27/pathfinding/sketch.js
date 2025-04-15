@@ -59,7 +59,7 @@ function setup() {
 	wall.h = 40;
 	wall.w = 40;
 
-	let tilemap = new Tiles(map, 20, 20, 40, 40);
+	tilemap = new Tiles(map, 20, 20, 40, 40);
 
 	grid = new PathFinding.Grid(matrix);
 	finder = new PathFinding.AStarFinder();
