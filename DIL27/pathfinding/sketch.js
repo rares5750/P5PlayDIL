@@ -86,10 +86,18 @@ function setup() {
 	player2 = new Sprite(start[startDecider2].x, start[startDecider2].y, 20);
 	player2.colour = "red";
 
+
 	grid = new PF.Grid(matrix);
 	finder = new PF.AStarFinder();
 	path = finder.findPath(Math.floor(player.x / 40), Math.floor(player.y / 40), Math.floor(exit[endDecider].x / 40), Math.floor(exit[endDecider].y / 40), grid);
 	path2 = finder.findPath(Math.floor(player2.x / 40), Math.floor(player2.y / 40), Math.floor(exit[endDecider].x / 40), Math.floor(exit[endDecider].y / 40), grid);
+
+	
+	console.log(grid);
+	console.log(Math.floor(player2.x / 40));
+	console.log(Math.floor(player2.y / 40));
+	console.log(Math.floor(exit[endDecider].x / 40));
+	console.log(Math.floor(exit[endDecider].y / 40));
 
 	node = new Group();
 	node.visited = false;
@@ -100,6 +108,7 @@ function setup() {
 		let n = new node.Sprite((p[0]*40) + 20, (p[1]*40) + 20);
 		n.visible = false;
 	}
+	
 
 	node2 = new Group();
 	node2.visited = false;
